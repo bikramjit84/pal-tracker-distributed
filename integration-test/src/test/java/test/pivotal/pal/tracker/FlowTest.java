@@ -23,7 +23,7 @@ public class FlowTest {
     private ApplicationServer registrationServer = new ApplicationServer(workingDir + "/../applications/registration-server/build/libs/registration-server.jar", "8883");
     private ApplicationServer allocationsServer = new ApplicationServer(workingDir + "/../applications/allocations-server/build/libs/allocations-server.jar", "8881");
     private ApplicationServer backlogServer = new ApplicationServer(workingDir + "/../applications/backlog-server/build/libs/backlog-server.jar", "8882");
-    private ApplicationServer timesheetsServer = new ApplicationServer(workingDir + "/../applications/timesheets-server/build/libs/timesheets-server.jar", "8884");
+    private ApplicationServer timesheetsServer = new ApplicationServer(workingDir + "/../applications/timesheets-server/build/libs/timesheets-server.jar", "8885");
 
     private String registrationServerUrl(String path) {
         return "http://localhost:8883" + path;
@@ -38,7 +38,7 @@ public class FlowTest {
     }
 
     private String timesheetsServerUrl(String path) {
-        return "http://localhost:8884" + path;
+        return "http://localhost:8885" + path;
     }
 
     private long findResponseId(Response response) {
@@ -61,7 +61,7 @@ public class FlowTest {
         allocationsServer.startWithDatabaseName("tracker_allocations_test");
         backlogServer.startWithDatabaseName("tracker_backlog_test");
         timesheetsServer.startWithDatabaseName("tracker_timesheets_test");
-        ApplicationServer.waitOnPorts("8881", "8882", "8883", "8884");
+        ApplicationServer.waitOnPorts("8881", "8882", "8883", "8885");
         TestScenarioSupport.clearAllDatabases();
     }
 
