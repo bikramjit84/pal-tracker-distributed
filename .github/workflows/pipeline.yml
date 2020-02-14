@@ -11,6 +11,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: Make gradle executable
+        run: chmod +x ./gradlew
       - name: Create test database
         run: |
           mysql -uroot -proot < databases/create_databases.sql
