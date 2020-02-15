@@ -15,12 +15,12 @@ public class ProjectClient {
     private final RestOperations restOperations;
     private final String endpoint;
 
-    @CircuitBreaker(name = "project", fallbackMethod = "getProjectFromCache")
     public ProjectClient(RestOperations restOperations, String registrationServerEndpoint) {
         this.restOperations = restOperations;
         this.endpoint = registrationServerEndpoint;
     }
 
+    @CircuitBreaker(name = "project", fallbackMethod = "getProjectFromCache")
     public ProjectInfo getProject(long projectId) {
         ProjectInfo project = restOperations.getForObject(endpoint + "/projects/" + projectId, ProjectInfo.class);
         projectsCache.put(projectId, project);
